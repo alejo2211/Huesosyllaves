@@ -20957,8 +20957,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd7a3cc4f5ffc9448262f272686e5aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  velocidad: 5
   jumpForce: 7
+  rb2d: {fileID: 0}
+  isGrounded: 1
+  v2: {x: 100, y: 25}
+  estaminaMax: 8
+  estaminaActual: 0
+  consumoMovimiento: 2
+  consumoSalto: 3
+  regeneracion: 1
+  velocidadReducida: 2.5
+  estaminaCero: 0
 --- !u!1 &2029679723
 GameObject:
   m_ObjectHideFlags: 0
@@ -21321,11 +21331,11 @@ PrefabInstance:
       addedObject: {fileID: 294982227}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6176787615481303844, guid: a3879484d58e7e84aae7907b2f321e29, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1972109200}
+      insertIndex: 1
+      addedObject: {fileID: 1972109205}
     - targetCorrespondingSourceObject: {fileID: 6176787615481303844, guid: a3879484d58e7e84aae7907b2f321e29, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1972109205}
+      addedObject: {fileID: 1972109200}
   m_SourcePrefab: {fileID: 100100000, guid: a3879484d58e7e84aae7907b2f321e29, type: 3}
 --- !u!1001 &5883962242517377663
 PrefabInstance:
