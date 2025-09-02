@@ -7,7 +7,7 @@ public class Bone : MonoBehaviour
         if (collision.CompareTag("Player")) // Si el jugador lo toca
         {
             // Busca el ScoreManager en la escena y suma punto
-            FindObjectOfType<ScoreManager>().SumarPunto();
+            FindObjectOfType<GameManager>().SumarPunto();
 
             // Destruye el hueso recogido
             Destroy(gameObject);
