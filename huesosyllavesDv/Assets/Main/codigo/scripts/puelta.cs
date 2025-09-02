@@ -14,12 +14,13 @@ public class Door : MonoBehaviour
 
             if (manager.TieneLlave)
             {
-                mensajeUI.text = "¡GANASTE!";
-                Time.timeScale = 0f; // Pausa el juego
+                //mensajeUI.text = "¡GANASTE!";
+                //Time.timeScale = 0f; // Pausa el juego
+                SceneManager.LoadScene("Ganaste");
             }
             else
             {
-                mensajeUI.text = "Necesitas la llave...";
+                //mensajeUI.text = "Necesitas la llave...";
             }
         }
     }
