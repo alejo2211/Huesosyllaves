@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Main/level/escenas/Ganaste.unity
     guid: 47923868e925427469e830bc981bcfa9
+  - enabled: 1
+    path: Assets/Main/level/escenas/Perdiste.unity
+    guid: 92ccf540e28e82e498a397e11c9f101a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

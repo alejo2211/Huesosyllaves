@@ -2,14 +2,12 @@ using UnityEngine;
 
 public class Bone : MonoBehaviour
 {
+    public GameManager gameManager;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player")) // Si el jugador lo toca
         {
-            // Busca el ScoreManager en la escena y suma punto
-            FindObjectOfType<GameManager>().SumarPunto();
-
-            // Destruye el hueso recogido
+            gameManager.puntos++;
             Destroy(gameObject);
         }
     }

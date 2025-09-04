@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class Trampa : MonoBehaviour
 {
-    public int daño = -1; // Cuánta vida resta
-
+public GameManager gameManager;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player"))
         {
-            FindObjectOfType<GameManager>().CambiarVida(daño);
+            gameManager.vida--;
+            Debug.Log("entrando a la trampa");
+            gameManager.Perder();
         }
     }
 }

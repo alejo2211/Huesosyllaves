@@ -42,6 +42,19 @@ public class GameManager : MonoBehaviour
         ActualizarUI();
     }
 
+    public void SumarVida()
+    {
+        vida++;
+        ActualizarUI();
+    }
+
+    public void RestarVida()
+    {
+        vida--;
+        ActualizarUI();
+        
+    }
+
     public void SumarPunto()
     {
         puntos++;
@@ -52,16 +65,16 @@ public class GameManager : MonoBehaviour
         ActualizarUI();
     }
 
-    public void CambiarVida(int cantidad)
+    public void Perder()
     {
-        vida += cantidad;
+      
 
         if (vida <= 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("Perdiste");
         }
-
         ActualizarUI();
+
     }
 
     public void RecogerLlave()
@@ -78,6 +91,7 @@ public class GameManager : MonoBehaviour
 
     private void ActualizarUI()
     {
+        
         if (puntosUI != null) puntosUI.text = "Puntos: " + puntos;
         if (vidaUI != null) vidaUI.text = "Vida: " + vida;
         if (llaveUI != null) llaveUI.text = "Llave: " + (TieneLlave ? "Sí" : "No");
