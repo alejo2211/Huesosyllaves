@@ -22,6 +22,13 @@ public class GameManager : MonoBehaviour
     private float tiempoRestante;
     public TextMeshProUGUI tiempoUI;
 
+    [SerializeField]
+    private GameManager gameManager;
+    [SerializeField]
+    private TextMeshProUGUI mensajeUI;
+    [SerializeField]
+    private int puntosnecesarios;
+
     private void Start()
     {
         tiempoRestante = tiempoInicial;
@@ -88,6 +95,27 @@ public class GameManager : MonoBehaviour
         tiempoRestante += cantidad;
         ActualizarUI();
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            gameManager.TieneLlave = true;
+            mensajeUI.text = "Ganaste";
+
+            
+        }
+    }
+
+    public void DestruirObstaculo()
+    {
+        if (gameManager != null && gameManager.puntos >= puntosnecesarios)
+        {
+            Destroy(gameObject); // El obstáculo desaparece
+        }
+    }
+
+
 
     private void ActualizarUI()
     {

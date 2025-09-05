@@ -3,12 +3,10 @@ using UnityEngine;
 public class Obstaculo : MonoBehaviour
 {
     public int puntosNecesarios = 10; // Puntos que necesita el jugador para eliminar el obstáculo
+    [SerializeField]
     private GameManager gameManager;
 
-    private void Start()
-    {
-        gameManager = FindObjectOfType<GameManager>();
-    }
+   
 
     private void Update()
     {
