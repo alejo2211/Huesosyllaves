@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
-    public TextMeshProUGUI mensajeUI;
+   // public TextMeshProUGUI mensajeUI;
     [SerializeField]
     GameManager gameManager;
 
