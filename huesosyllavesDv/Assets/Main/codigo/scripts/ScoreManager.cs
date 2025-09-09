@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
         if (tiempoRestante <= 0)
         {
             // Reinicia la escena si se acaba el tiempo
-            SceneManager.LoadScene("Taller");
+            SceneManager.LoadScene("Perdiste");
         }
 
         ActualizarUI();
@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
     {
         if (vida <= 0)
         {
-            SceneManager.LoadScene("Taller");
+            SceneManager.LoadScene("Perdiste");
         }
         ActualizarUI();
     }

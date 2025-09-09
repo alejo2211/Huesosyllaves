@@ -4,26 +4,25 @@ using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
+   // public TextMeshProUGUI mensajeUI;
     [SerializeField]
-    private TextMeshProUGUI mensajeUI;
-    [SerializeField]
-    private GameManager gameManager;
+    GameManager gameManager;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            gameManager.TieneLlave = true;
+            gameManager = gameManager;
 
             if (gameManager.TieneLlave)
             {
-                mensajeUI.text = "¡GANASTE!";
+                mensajeUI.text = "ï¿½GANASTE!";
                 //Time.timeScale = 0f; // Pausa el juego
                 SceneManager.LoadScene("Ganaste");
             }
             else
             {
-                mensajeUI.text = "Necesitas la llave...";
+               // mensajeUI.text = "Necesitas la llave...";
             }
         }
     }
