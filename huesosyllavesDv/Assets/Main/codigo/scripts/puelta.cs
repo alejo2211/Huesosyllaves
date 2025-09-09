@@ -5,14 +5,16 @@ using UnityEngine.SceneManagement;
 public class Door : MonoBehaviour
 {
     public TextMeshProUGUI mensajeUI;
+    [SerializeField]
+    GameManager gameManager;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            GameManager manager = FindObjectOfType<GameManager>();
+            gameManager = gameManager;
 
-            if (manager.TieneLlave)
+            if (gameManager.TieneLlave)
             {
                 //mensajeUI.text = "¡GANASTE!";
                 //Time.timeScale = 0f; // Pausa el juego
@@ -20,7 +22,7 @@ public class Door : MonoBehaviour
             }
             else
             {
-                //mensajeUI.text = "Necesitas la llave...";
+               // mensajeUI.text = "Necesitas la llave...";
             }
         }
     }
