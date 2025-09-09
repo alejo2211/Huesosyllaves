@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,22 +22,28 @@ public class GameManager : MonoBehaviour
     public float tiempoInicial = 60f;
     private float tiempoRestante;
     public TextMeshProUGUI tiempoUI;
+    private bool juegoIniciado = false; // Para controlar cuándo empieza el conteo
 
-    [SerializeField]
-    private GameManager gameManager;
-    [SerializeField]
-    private TextMeshProUGUI mensajeUI;
-    [SerializeField]
-    private int puntosnecesarios;
+    [Header("Mensajes")]
+    [SerializeField] private TextMeshProUGUI mensajeUI;
+    [TextArea(3, 5)]
+    public string mensajeTutorial = "¡Bienvenido!\n\nUsa WASD o las flechas para moverte.\n" +
+                                    "Objetivo: recoge la llave y llega a la salida.\n" +
+                                    "Cuidado con los obstáculos, te quitan vida.";
+
+    [SerializeField] private int puntosnecesarios;
 
     private void Start()
     {
         tiempoRestante = tiempoInicial;
         ActualizarUI();
+        StartCoroutine(MostrarMensajeTutorial());
     }
 
     private void Update()
     {
+        if (!juegoIniciado) return; // No empieza el conteo hasta terminar tutorial
+
         // Reducir el tiempo cada frame
         tiempoRestante -= Time.deltaTime;
 
@@ -49,6 +56,25 @@ public class GameManager : MonoBehaviour
         ActualizarUI();
     }
 
+    IEnumerator MostrarMensajeTutorial()
+    {
+        if (mensajeUI != null)
+        {
+            mensajeUI.text = mensajeTutorial;
+            mensajeUI.gameObject.SetActive(true);
+        }
+
+        yield return new WaitForSeconds(5f); // Espera 5 segundos
+
+        if (mensajeUI != null)
+        {
+            mensajeUI.text = ""; // Borra el mensaje
+            mensajeUI.gameObject.SetActive(false);
+        }
+
+        juegoIniciado = true; // Ahora sí arranca el tiempo
+    }
+
     public void SumarVida()
     {
         vida++;
@@ -59,7 +85,6 @@ public class GameManager : MonoBehaviour
     {
         vida--;
         ActualizarUI();
-        
     }
 
     public void SumarPunto()
@@ -74,14 +99,11 @@ public class GameManager : MonoBehaviour
 
     public void Perder()
     {
-      
-
         if (vida <= 0)
         {
             SceneManager.LoadScene("Taller");
         }
         ActualizarUI();
-
     }
 
     public void RecogerLlave()
@@ -100,26 +122,25 @@ public class GameManager : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            gameManager.TieneLlave = true;
-            mensajeUI.text = "Ganaste";
-
-            
+            TieneLlave = true;
+            if (mensajeUI != null)
+            {
+                mensajeUI.gameObject.SetActive(true);
+                mensajeUI.text = "¡Ganaste!";
+            }
         }
     }
 
     public void DestruirObstaculo()
     {
-        if (gameManager != null && gameManager.puntos >= puntosnecesarios)
+        if (puntos >= puntosnecesarios)
         {
             Destroy(gameObject); // El obstáculo desaparece
         }
     }
 
-
-
     private void ActualizarUI()
     {
-        
         if (puntosUI != null) puntosUI.text = "Puntos: " + puntos;
         if (vidaUI != null) vidaUI.text = "Vida: " + vida;
         if (llaveUI != null) llaveUI.text = "Llave: " + (TieneLlave ? "Sí" : "No");
