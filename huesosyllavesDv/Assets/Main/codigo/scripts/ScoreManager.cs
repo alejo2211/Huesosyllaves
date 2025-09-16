@@ -97,4 +97,30 @@ public class GameManager : MonoBehaviour
         if (llaveUI != null) llaveUI.text = "Llave: " + (TieneLlave ? "Sí" : "No");
         if (tiempoUI != null) tiempoUI.text = "Tiempo: " + Mathf.Ceil(tiempoRestante);
     }
+
+    public void EstadoDelJuego(string estado)
+    {
+        switch (estado)
+        {
+            case "Play":
+                Time.timeScale = 1; 
+                break;
+            case "pause":
+                Time.timeScale = 0;
+                break;
+            case "Ganaste":
+                SceneManager.LoadScene("Ganaste");
+                break;
+            case "Perdiste":
+                SceneManager.LoadScene("Perdiste");
+                break;
+            case "Salir":
+                Application.Quit();
+                break;
+            case "Volver":
+                SceneManager.LoadScene("Taller");
+                break;
+
+        }
+    }
 }
