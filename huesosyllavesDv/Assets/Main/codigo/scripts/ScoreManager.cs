@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     private float tiempoRestante;
     public TextMeshProUGUI tiempoUI;
 
+    
+
     private void Start()
     {
         tiempoRestante = tiempoInicial;
@@ -46,6 +48,7 @@ public class GameManager : MonoBehaviour
     {
         vida++;
         ActualizarUI();
+        
     }
 
     public void RestarVida()

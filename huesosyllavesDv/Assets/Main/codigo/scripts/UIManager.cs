@@ -1,3 +1,4 @@
+using UnityEngine.UI;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -5,11 +6,19 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private bool isPaused = false;
     [SerializeField]
-
     private GameObject panel;
+    [SerializeField]
+    private Image[] spritesCorazon;
+
+    
+
+   
+
 
     void Update()
     {
+        
+
         // Detectar cuando se presiona la tecla Escape
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -41,5 +50,20 @@ public class UIManager : MonoBehaviour
         isPaused = false;
         // Aquí puedes desactivar el menú de pausa
         // Ejemplo: pauseMenuUI.SetActive(false);
+    }
+
+    void ActualizarUIVida()
+    {
+        for (int i = 0; i < spritesCorazon.Length; i++)
+        {
+            if (i < 5)
+            {
+                spritesCorazon[i].enabled = true;  // Muestra el corazón
+            }
+            else
+            {
+                spritesCorazon[i].enabled = false; // Oculta el corazón
+            }
+        }
     }
 }
