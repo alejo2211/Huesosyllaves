@@ -11,6 +11,12 @@ public class UIManager : MonoBehaviour
     private Sprite[] spritesCorazon;
     [SerializeField]
     private Image imCorazones;
+    [SerializeField]
+    private Color conllave;
+    [SerializeField]
+    private Color sinllave;
+    [SerializeField]
+    private Image imLlave;
     void Update()
     {
         
@@ -47,6 +53,13 @@ public class UIManager : MonoBehaviour
         // Aquí puedes desactivar el menú de pausa
         // Ejemplo: pauseMenuUI.SetActive(false);
     }
+
+    public void CambiarLlave(bool t)
+    {
+        imLlave.color = t ? conllave : sinllave;
+    }
+
+
 
     public void ActualizarUIVida(int vidaActual)
     {

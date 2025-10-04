@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     public float tiempoInicial = 60f;
     private float tiempoRestante;
     public TextMeshProUGUI tiempoUI;
-    public UIManager UIManager;
+    public UIManager uiManager;
 
     
 
@@ -103,7 +103,13 @@ public class GameManager : MonoBehaviour
         if (vidaUI != null) vidaUI.text = "Vida: " + vida;
         if (llaveUI != null) llaveUI.text = "Llave: " + (TieneLlave ? "Sí" : "No");
         if (tiempoUI != null) tiempoUI.text = "Tiempo: " + Mathf.Ceil(tiempoRestante);
-        if (UIManager != null) UIManager.ActualizarUIVida(vida);
+        if (uiManager != null) uiManager.ActualizarUIVida(vida);
+        if (uiManager != null) uiManager.CambiarLlave(TieneLlave);
+    }
+    public void AdquirirLlave(bool tienellave)
+    {
+        TieneLlave=tienellave;
+        ActualizarUI();
     }
 
     public void EstadoDelJuego(string estado)  

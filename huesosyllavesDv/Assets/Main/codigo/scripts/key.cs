@@ -12,7 +12,7 @@ public class Key : MonoBehaviour
         {
             // Indica en el GameManager que ya tenemos la llave
            // FindObjectOfType<GameManager>().TieneLlave = true;
-            gameManager.TieneLlave = true;
+            gameManager.AdquirirLlave(true);
 
             // Destruye la llave del escenario
             Destroy(gameObject);
