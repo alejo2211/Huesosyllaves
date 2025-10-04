@@ -8,13 +8,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject panel;
     [SerializeField]
-    private Image[] spritesCorazon;
-
-    
-
-   
-
-
+    private Sprite[] spritesCorazon;
+    [SerializeField]
+    private Image imCorazones;
     void Update()
     {
         
@@ -52,18 +48,15 @@ public class UIManager : MonoBehaviour
         // Ejemplo: pauseMenuUI.SetActive(false);
     }
 
-    void ActualizarUIVida()
+    public void ActualizarUIVida(int vidaActual)
     {
-        for (int i = 0; i < spritesCorazon.Length; i++)
+        if (imCorazones != null && vidaActual >= 0 && vidaActual < spritesCorazon.Length)
         {
-            if (i < 5)
-            {
-                spritesCorazon[i].enabled = true;  // Muestra el corazón
-            }
-            else
-            {
-                spritesCorazon[i].enabled = false; // Oculta el corazón
-            }
+            imCorazones.sprite = spritesCorazon[vidaActual];
+        }
+        else
+        {
+            Debug.LogError("No esta en el rango o la imagen no esta asiganda");
         }
     }
 }

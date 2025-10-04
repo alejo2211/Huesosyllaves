@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using Unity.Mathematics;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
     public float tiempoInicial = 60f;
     private float tiempoRestante;
     public TextMeshProUGUI tiempoUI;
+    public UIManager UIManager;
 
     
 
@@ -47,6 +49,7 @@ public class GameManager : MonoBehaviour
     public void SumarVida()
     {
         vida++;
+        vida = math.clamp(vida, 0, 4);
         ActualizarUI();
         
     }
@@ -54,8 +57,9 @@ public class GameManager : MonoBehaviour
     public void RestarVida()
     {
         vida--;
+        vida = math.clamp(vida, 0, 4);
         ActualizarUI();
-        
+
     }
 
     public void SumarPunto()
@@ -99,9 +103,10 @@ public class GameManager : MonoBehaviour
         if (vidaUI != null) vidaUI.text = "Vida: " + vida;
         if (llaveUI != null) llaveUI.text = "Llave: " + (TieneLlave ? "Sí" : "No");
         if (tiempoUI != null) tiempoUI.text = "Tiempo: " + Mathf.Ceil(tiempoRestante);
+        if (UIManager != null) UIManager.ActualizarUIVida(vida);
     }
 
-    public void EstadoDelJuego(string estado)
+    public void EstadoDelJuego(string estado)  
     {
         switch (estado)
         {
