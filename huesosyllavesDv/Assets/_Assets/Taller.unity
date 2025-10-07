@@ -24857,7 +24857,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidad: 20
-  jumpForce: 15
+  jumpForce: 20
   rb2d: {fileID: 0}
   isGrounded: 1
   v2: {x: 100, y: 25}

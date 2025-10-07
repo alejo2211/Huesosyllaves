@@ -41,8 +41,7 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0f; // Detiene el tiempo del juego
         isPaused = true;
 
-        // Aquí puedes activar tu menú de pausa si tienes uno
-        // Ejemplo: pauseMenuUI.SetActive(true);
+  
     }
 
     void ResumeGame()
@@ -50,8 +49,7 @@ public class UIManager : MonoBehaviour
         panel.SetActive(false);
         Time.timeScale = 1f; // Reanuda el tiempo del juego
         isPaused = false;
-        // Aquí puedes desactivar el menú de pausa
-        // Ejemplo: pauseMenuUI.SetActive(false);
+
     }
 
     public void CambiarLlave(bool t)
