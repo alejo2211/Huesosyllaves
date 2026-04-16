@@ -16,7 +16,7 @@ public class Door : MonoBehaviour
 
             if (gameManager.TieneLlave)
             {
-                mensajeUI.text = "�GANASTE!";
+                //mensajeUI.text = "�GANASTE!";
                 //Time.timeScale = 0f; // Pausa el juego
                 SceneManager.LoadScene("Ganaste");
             }
